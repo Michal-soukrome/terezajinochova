@@ -5,7 +5,6 @@ export const dictionary = {
     home: "Home",
     weddingDiary: "Wedding Diary",
     aboutDiary: "About the Diary",
-    order: "Order",
     questions: "I have questions",
     back: "Back",
     loading: "Loading...",
@@ -165,33 +164,6 @@ export const dictionary = {
     ready: "Ready to start planning?",
     description:
       "Get your wedding diary today and start planning the wedding you've always dreamed of.",
-  },
-  order: {
-    title: "Order Wedding Diary",
-    subtitle:
-      "Choose the version that suits you best. Both versions include a complete wedding planning guide.",
-    popular: "Most Popular",
-    includingVatShipping: "including VAT and shipping",
-    perfectAsGift: "Perfect as a gift • including VAT and shipping",
-    viewDetails: "View details",
-    shippingAndPayment: "Shipping and Payment",
-    cardPayment: "Card payment",
-    cardPaymentDesc:
-      "Secure payment via Stripe. We accept all common credit cards and instant bank transfers.",
-    delivery: "Delivery",
-    deliveryDesc:
-      "Digital version immediately after payment. Physical copy within 2-3 working days in the Czech Republic.",
-    giftPackaging: "Gift packaging",
-    giftPackagingDesc:
-      "Premium version in luxury gift packaging is ideal as a wedding gift for the bride.",
-    deliveryTimes: "Delivery times",
-    digitalVersion: "Digital version: immediately after payment",
-    physicalCopy: "Physical copy: 2-3 working days",
-    premiumVersion: "Premium version: 3-5 working days",
-    returns: "Returns",
-    thirtyDaysReturn: "30 days to return",
-    satisfactionGuarantee: "Satisfaction guarantee",
-    contactUsForHelp: "Contact us for help",
   },
   aboutMe: {
     title: "Hi, I'm Tereza",

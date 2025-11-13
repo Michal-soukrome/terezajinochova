@@ -5,7 +5,6 @@ export const dictionary = {
     home: "Domů",
     weddingDiary: "Svatební deník",
     aboutDiary: "O deníku",
-    order: "Objednat",
     questions: "Mám dotazy",
     back: "Zpět",
     loading: "Načítání...",
@@ -165,33 +164,6 @@ export const dictionary = {
     ready: "Připraveni začít plánovat?",
     description:
       "Získejte svůj svatební deník ještě dnes a začněte plánovat svatbu, o které jste vždy snili.",
-  },
-  order: {
-    title: "Objednat Svatební Deník",
-    subtitle:
-      "Vyberte si variantu, která vám nejlépe vyhovuje. Obě verze obsahují kompletní průvodce plánováním svatby.",
-    popular: "Nejoblíbenější",
-    includingVatShipping: "včetně DPH a poštovného",
-    perfectAsGift: "Ideální jako dárek • včetně DPH a poštovného",
-    viewDetails: "Zobrazit detaily",
-    shippingAndPayment: "Doprava a platba",
-    cardPayment: "Platba kartou",
-    cardPaymentDesc:
-      "Bezpečná platba přes Stripe. Přijímáme všechny běžné platební karty a okamžité bankovní převody.",
-    delivery: "Doručení",
-    deliveryDesc:
-      "Digitální verze okamžitě po zaplacení. Fyzická kopie do 2-3 pracovních dnů po České republice.",
-    giftPackaging: "Dárkové balení",
-    giftPackagingDesc:
-      "Prémiová verze v luxusním dárkovém balení je ideální jako svatební dárek pro nevěstu.",
-    deliveryTimes: "Dodací lhůty",
-    digitalVersion: "Digitální verze: okamžitě po zaplacení",
-    physicalCopy: "Fyzická kopie: 2-3 pracovní dny",
-    premiumVersion: "Prémiová verze: 3-5 pracovních dnů",
-    returns: "Vrácení zboží",
-    thirtyDaysReturn: "30 dnů na vrácení",
-    satisfactionGuarantee: "Záruka spokojenosti",
-    contactUsForHelp: "Kontaktujte nás pro pomoc",
   },
   aboutMe: {
     title: "Ahoj, jsem Tereza",

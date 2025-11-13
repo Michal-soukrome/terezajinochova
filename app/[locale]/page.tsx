@@ -67,7 +67,7 @@ export default async function HomePage({
             <div className="space-y-3">
               <BuyButton priceId={PRODUCTS.basic.priceId} />
               <a
-                href="/denik/zakladni"
+                href={`/${locale}/zakladni`}
                 className="block w-full text-center border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-6 rounded-lg transition"
               >
                 Zobrazit detaily
@@ -118,7 +118,7 @@ export default async function HomePage({
             <div className="space-y-3">
               <BuyButton priceId={PRODUCTS.premium.priceId} />
               <a
-                href="/denik/premium"
+                href={`/${locale}/premium`}
                 className="block w-full text-center border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-6 rounded-lg transition"
               >
                 Zobrazit detaily

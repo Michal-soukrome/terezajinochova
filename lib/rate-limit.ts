@@ -54,4 +54,5 @@ class RateLimiter {
 
 // Create rate limiter instances
 export const checkoutRateLimiter = new RateLimiter(15 * 60 * 1000, 5); // 5 requests per 15 minutes for checkout
+export const validationRateLimiter = new RateLimiter(5 * 60 * 1000, 20); // 20 requests per 5 minutes for validation
 export const webhookRateLimiter = new RateLimiter(60 * 1000, 100); // 100 requests per minute for webhooks

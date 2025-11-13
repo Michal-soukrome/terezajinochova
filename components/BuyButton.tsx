@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Dictionary } from "@/lib/dictionaries";
 
 interface BuyButtonProps {
   priceId: string;
@@ -17,9 +18,7 @@ export default function BuyButton({ priceId }: BuyButtonProps) {
     try {
       const response = await fetch("/api/create-checkout", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ priceId }),
       });
 

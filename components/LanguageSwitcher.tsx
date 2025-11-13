@@ -1,7 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { Locale, locales } from "@/lib/i18n";
+import { useRouter, usePathname } from "next/navigation";
+
+type Locale = "cs" | "en";
+const locales = ["cs", "en"] as const;
 
 interface LanguageSwitcherProps {
   currentLocale: Locale;
@@ -11,10 +13,12 @@ export default function LanguageSwitcher({
   currentLocale,
 }: LanguageSwitcherProps) {
   const router = useRouter();
+  const pathname = usePathname();
 
   const switchLanguage = (newLocale: Locale) => {
-    const newPath = newLocale === "cs" ? "/cs" : "/en";
-    router.push(newPath);
+    // Replace the current locale in the pathname with the new locale
+    const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`);
+    router.replace(newPath);
   };
 
   return (

@@ -11,7 +11,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
   const dict = await getDictionary(locale as "cs" | "en");
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-16">
+    <div className="max-w-4xl mx-auto p-4">
       <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
         <div>
           <h1 className="text-4xl font-bold mb-6">{dict.aboutMe.title}</h1>

@@ -20,10 +20,10 @@ export default async function BasicDiaryPage({
   const product = PRODUCTS.basic;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-16">
+    <div className="max-w-4xl mx-auto p-4">
       {/* Breadcrumb */}
       <nav className="mb-8">
-        <ol className="flex items-center space-x-2 text-sm text-gray-600">
+        <ol className="flex items-center gap-2 text-sm text-gray-600 flex-wrap">
           <li>
             <a href={`/${locale}`} className="hover:text-black">
               {dict.common.home}

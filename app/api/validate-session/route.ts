@@ -1,8 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
+import { validationRateLimiter } from "@/lib/rate-limit";
+import { SecureLogger } from "@/lib/secure-logger";
 
 export async function POST(request: NextRequest) {
+  // Get client IP for rate limiting
+  const clientIP =
+    request.headers.get("x-forwarded-for") ||
+    request.headers.get("x-real-ip") ||
+    "unknown";
+
   try {
+    // Check rate limit
+    if (validationRateLimiter.isRateLimited(clientIP)) {
+      SecureLogger.security("Rate limit exceeded for session validation", {
+        clientIP,
+      });
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const { sessionId } = await request.json();
 
     if (!sessionId) {

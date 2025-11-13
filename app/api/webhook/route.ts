@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { webhookRateLimiter } from "@/lib/rate-limit";
 import { SecureLogger } from "@/lib/secure-logger";
+import { stripe, webhookSecret } from "@/lib/stripe";
 
 // Stripe webhook signature verification
 async function verifyStripeSignature(
@@ -81,7 +82,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
     if (!webhookSecret) {
       SecureLogger.error("STRIPE_WEBHOOK_SECRET not configured");
       return NextResponse.json(

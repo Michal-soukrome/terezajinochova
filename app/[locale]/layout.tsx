@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "@/app/globals.css";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Header from "@/components/Header";
 import { getDictionary } from "@/lib/dictionaries";
 import { notFound } from "next/navigation";
 
@@ -137,44 +137,7 @@ export default async function LocaleLayout({
       <body
         className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
       >
-        <header className="bg-white shadow-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-4">
-              <h1 className="text-2xl font-bold font-playfair text-gray-900">
-                {locale === "cs" ? "Svatební Deník" : "Wedding Diary"}
-              </h1>
-              <div className="flex items-center space-x-6">
-                <nav className="hidden md:flex space-x-8">
-                  <a
-                    href={`/${locale}`}
-                    className="text-gray-600 hover:text-gray-900"
-                  >
-                    {dict.common.home}
-                  </a>
-                  <a
-                    href={`/${locale}/zakladni`}
-                    className="text-gray-600 hover:text-gray-900"
-                  >
-                    {dict.common.weddingDiary}
-                  </a>
-                  <a
-                    href={`/${locale}/objednavka`}
-                    className="text-gray-600 hover:text-gray-900"
-                  >
-                    {dict.common.order}
-                  </a>
-                  <a
-                    href={`/${locale}/kontakt`}
-                    className="text-gray-600 hover:text-gray-900"
-                  >
-                    {dict.common.contact}
-                  </a>
-                </nav>
-                <LanguageSwitcher currentLocale={locale} />
-              </div>
-            </div>
-          </div>
-        </header>
+        <Header locale={locale} dict={dict} />
 
         <main>{children}</main>
 
