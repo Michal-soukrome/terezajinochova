@@ -1,5 +1,6 @@
 import { cs } from "./cs";
 import { en } from "./en";
+import { routes, RouteKey } from "../routes";
 
 export const dictionaries = {
   cs,
@@ -12,26 +13,16 @@ export type Locale = keyof typeof dictionaries;
 export const locales = ["cs", "en"] as const;
 export const defaultLocale: Locale = "cs";
 
-export const localizedSlugs = {
-  cs: {
-    contact: "contact",
-    success: "success",
-    cancel: "cancel",
-    basic: "zakladni",
-    premium: "premium",
-  },
-  en: {
-    contact: "contact",
-    success: "success",
-    cancel: "cancel",
-    basic: "basic",
-    premium: "premium",
-  },
-} as const;
-
-export type PageKey = keyof typeof localizedSlugs.cs;
-
 // Helper function for generating localized links
-export const getLink = (locale: Locale, page: PageKey): string => {
-  return `/${locale}/${localizedSlugs[locale][page]}`;
+export const getLink = (locale: Locale, page: RouteKey): string => {
+  return `/${locale}/${routes[page][locale]}`;
+};
+
+// Helper to return a dictionary by locale (sync) for server components
+export const getDictionary = (locale: Locale) => {
+  if (locale !== "cs" && locale !== "en") {
+    // default fallback
+    return dictionaries[defaultLocale];
+  }
+  return dictionaries[locale];
 };

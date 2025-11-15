@@ -1,4 +1,5 @@
-import { dictionaries } from "@/lib/i18n";
+import { getDictionary } from "@/lib/i18n";
+import { getLocalizedPath } from "@/lib/routes";
 import { notFound } from "next/navigation";
 import { getLink } from "@/lib/i18n";
 
@@ -13,32 +14,38 @@ export default async function PremiumPage({
     notFound();
   }
 
-  const dict = dictionaries[locale as "cs" | "en"];
+  const dict = getDictionary(locale as "cs" | "en");
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <h1 className="text-5xl font-bold mb-4">{dict.premium.title}</h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">{dict.premium.description}</p>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          {dict.premium.description}
+        </p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         <div className="bg-white border-2 border-gray-200 rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-4">{dict.premium.basic.title}</h2>
-          <div className="text-3xl font-bold mb-2">{dict.premium.basic.price}</div>
+          <h2 className="text-2xl font-bold mb-4">
+            {dict.premium.basic.title}
+          </h2>
+          <div className="text-3xl font-bold mb-2">
+            {dict.premium.basic.price}
+          </div>
           <p className="text-gray-600 mb-6">{dict.premium.basic.description}</p>
-          
+
           <ul className="space-y-3 mb-8">
             {dict.premium.basic.features.map((feature, index) => (
               <li key={index} className="flex items-start">
-                <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 shrink-0"></span>
                 {feature}
               </li>
             ))}
           </ul>
 
           <a
-            href={getLink(locale, "basic")}
+            href={getLocalizedPath("zakladni", locale)}
             className="w-full bg-gray-200 text-gray-800 py-4 rounded-lg font-semibold hover:bg-gray-300 transition block text-center"
           >
             {dict.premium.basic.button}
@@ -51,22 +58,28 @@ export default async function PremiumPage({
               {dict.premium.premium.badge}
             </span>
           </div>
-          
-          <h2 className="text-2xl font-bold mb-4">{dict.premium.premium.title}</h2>
-          <div className="text-3xl font-bold mb-2">{dict.premium.premium.price}</div>
-          <p className="text-gray-300 mb-6">{dict.premium.premium.description}</p>
-          
+
+          <h2 className="text-2xl font-bold mb-4">
+            {dict.premium.premium.title}
+          </h2>
+          <div className="text-3xl font-bold mb-2">
+            {dict.premium.premium.price}
+          </div>
+          <p className="text-gray-300 mb-6">
+            {dict.premium.premium.description}
+          </p>
+
           <ul className="space-y-3 mb-8">
             {dict.premium.premium.features.map((feature, index) => (
               <li key={index} className="flex items-start">
-                <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 shrink-0"></span>
                 {feature}
               </li>
             ))}
           </ul>
 
           <a
-            href={getLink(locale, "premium")}
+            href={getLocalizedPath("premium", locale)}
             className="w-full bg-white text-black py-4 rounded-lg font-semibold hover:bg-gray-100 transition block text-center"
           >
             {dict.premium.premium.button}

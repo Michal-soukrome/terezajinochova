@@ -1,4 +1,4 @@
-import { dictionaries } from "@/lib/i18n";
+import { getDictionary } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 
 export default async function SuccessPage({
@@ -12,7 +12,7 @@ export default async function SuccessPage({
     notFound();
   }
 
-  const dict = dictionaries[locale as "cs" | "en"];
+  const dict = getDictionary(locale as "cs" | "en");
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-16 text-center">

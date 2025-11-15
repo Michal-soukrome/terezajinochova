@@ -1,51 +1,59 @@
-terezajinochova
+/Users/michaljirak/Documents/GitHub/terezajinochova
 ├── .env.local
-├── app
-│   ├── [locale]
-│   │   ├── (pages)
-│   │   ├── [slug]
-│   │   └── page.tsx
-│   ├── api
-│   │   └── webhook
+├── app/
+│   ├── [locale]/
+│   │   ├── cancel/
+│   │   ├── contact/
+│   │   ├── page.tsx
+│   │   ├── premium/
+│   │   ├── success/
+│   │   └── zakladni/
+│   ├── api/
+│   │   └── webhook/
 │   ├── favicon.ico
 │   ├── globals.css
 │   ├── loading.tsx
 │   ├── not-found.tsx
 │   └── page.tsx
-├── components
+├── components/
 │   ├── BuyButton.tsx
 │   ├── Header.tsx
 │   ├── HtmlTag.tsx
 │   ├── LanguageSwitcher.tsx
-│   ├── Loading.tsx
+│   └── Loading.tsx
 ├── eslint.config.mjs
 ├── filetree.txt
-├── lib
+├── lib/
 │   ├── env.ts
-│   ├── i18n
+│   ├── i18n/
 │   │   ├── cs.ts
 │   │   ├── en.ts
 │   │   └── index.ts
 │   ├── products.ts
 │   ├── secure-logger.ts
 │   └── stripe.ts
-├── middleware.ts
+├── middleware/
+│   └── index.ts
 ├── next-env.d.ts
 ├── next.config.ts
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.mjs
-├── public
-│   ├── assets
+├── public/
+│   ├── assets/
 │   │   └── thumbnail_IMG_5264.png
 │   ├── file.svg
 │   ├── globe.svg
-│   ├── images
+│   ├── images/
 │   │   └── README.md
-│   ├── products
+│   ├── next.svg
+│   ├── products/
 │   │   └── README.txt
 │   ├── robots.txt
 │   ├── sitemap.xml
+│   ├── vercel.svg
 │   └── window.svg
+├── scripts/
+│   └── generate-tree.js
 ├── tailwind.config.js
-├── tsconfig.json
+└── tsconfig.json

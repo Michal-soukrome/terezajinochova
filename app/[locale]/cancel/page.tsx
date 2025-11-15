@@ -1,4 +1,5 @@
-import { dictionaries } from "@/lib/i18n";
+import { getDictionary } from "@/lib/i18n";
+import { getLocalizedPath } from "@/lib/routes";
 import { notFound } from "next/navigation";
 import { getLink } from "@/lib/i18n";
 
@@ -13,7 +14,7 @@ export default async function CancelPage({
     notFound();
   }
 
-  const dict = dictionaries[locale as "cs" | "en"];
+  const dict = getDictionary(locale as "cs" | "en");
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-16 text-center">
@@ -39,20 +40,19 @@ export default async function CancelPage({
 
       <div className="bg-gray-50 rounded-lg p-6 mb-8">
         <p className="text-gray-700 mb-4">{dict.cancel.message}</p>
-        
+
         <div className="space-y-4">
           <div className="text-left">
             <h3 className="font-medium mb-2">
               {locale === "cs" ? "Vybrat jiný plán" : "Choose a different plan"}
             </h3>
             <p className="text-gray-700 text-sm mb-3">
-              {locale === "cs" 
+              {locale === "cs"
                 ? "Můžete si vybrat základní nebo prémiový balíček podle vašich potřeb."
-                : "You can choose between basic or premium packages based on your needs."
-              }
+                : "You can choose between basic or premium packages based on your needs."}
             </p>
             <a
-              href={getLink(locale, "premium")}
+              href={getLocalizedPath("premium", locale)}
               className="inline-block bg-black text-white px-4 py-2 rounded font-medium hover:bg-gray-800 transition text-sm"
             >
               {locale === "cs" ? "Zobrazit plány" : "View plans"}
@@ -64,13 +64,12 @@ export default async function CancelPage({
               {locale === "cs" ? "Máte otázky?" : "Have questions?"}
             </h3>
             <p className="text-gray-700 text-sm mb-3">
-              {locale === "cs" 
+              {locale === "cs"
                 ? "Neváhejte nás kontaktovat, rádi vám pomůžeme."
-                : "Don't hesitate to contact us, we're here to help."
-              }
+                : "Don't hesitate to contact us, we're here to help."}
             </p>
             <a
-              href={getLink(locale, "contact")}
+              href={getLocalizedPath("contact", locale)}
               className="inline-block bg-gray-200 text-gray-800 px-4 py-2 rounded font-medium hover:bg-gray-300 transition text-sm"
             >
               {locale === "cs" ? "Kontaktovat" : "Contact us"}
@@ -89,8 +88,7 @@ export default async function CancelPage({
         <p className="text-sm text-gray-500">
           {locale === "cs"
             ? "Potřebujete pomoc? Napište nám na info@svatebnidenik.cz"
-            : "Need help? Write to us at info@svatebnidenik.cz"
-          }
+            : "Need help? Write to us at info@svatebnidenik.cz"}
         </p>
       </div>
     </div>
