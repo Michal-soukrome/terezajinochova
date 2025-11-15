@@ -45,7 +45,7 @@ A simple, beautiful e-commerce website for Tereza's wedding planning diary. Buil
 - **/denik** - Product page with basic/gift variants
 - **/ja** - About Tereza and her story
 - **/kontakt** - Contact form for wedding coordination
-- **/success** - Post-purchase confirmation
+- **/uspech** - Post-purchase confirmation
 - **/cancel** - If payment cancelled
 
 ## 🚀 Quick Start

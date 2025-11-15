@@ -7,7 +7,7 @@
 - ✅ `app/layout.tsx` - Root layout with header, footer, metadata
 - ✅ `app/page.tsx` - Homepage with hero, products, about, contact
 - ✅ `app/product/[slug]/page.tsx` - **NEW**: Detailed product page with features, specs, and buy button
-- ✅ `app/success/page.tsx` - Order confirmation page
+- ✅ `app/uspech/page.tsx` - Order confirmation page
 - ✅ `app/cancel/page.tsx` - Payment cancellation page
 - ✅ `app/test/page.tsx` - **NEW**: Test page for email and system functionality
 - ✅ `app/api/create-checkout/route.ts` - Stripe checkout API

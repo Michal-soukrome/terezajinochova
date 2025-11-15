@@ -7,7 +7,7 @@ Disallow: /_next/
 Disallow: /.env
 
 # Allow crawling of main content
-Allow: /success
+Allow: /uspech
 Allow: /cancel
 
 # Sitemap

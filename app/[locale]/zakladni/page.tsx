@@ -46,7 +46,7 @@ export default async function BasicDiaryPage({
         <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-xl">
           <Image
             src={product.image}
-            alt={product.name}
+            alt={dict.products.basic.name}
             fill
             className="object-cover"
             priority
@@ -74,14 +74,16 @@ export default async function BasicDiaryPage({
           </div>
 
           <div className="mb-8">
-            <BuyButton priceId={product.priceId} />
+            <BuyButton priceId={product.priceId} dict={dict} />
           </div>
 
           {/* Key Features */}
           <div className="bg-gray-50 rounded-xl p-6">
-            <h3 className="font-semibold mb-4 text-black">Co dostanete:</h3>
+            <h3 className="font-semibold mb-4 text-black">
+              {dict.products.basic.whatYouGet}
+            </h3>
             <ul className="space-y-2">
-              {product.features.map((feature, i) => (
+              {Object.values(dict.products.basic.features).map((feature, i) => (
                 <li key={i} className="flex items-center">
                   <span className="text-black mr-3">✓</span>
                   <span className="text-gray-700">{feature}</span>
@@ -101,53 +103,45 @@ export default async function BasicDiaryPage({
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <h3 className="text-2xl font-semibold mb-4 text-black">
-              📋 Měsíční checklists
+              📋 {dict.products.basic.features.checklists}
             </h3>
             <p className="text-gray-700 mb-6">
-              Strukturované seznamy úkolů pro každý měsíc příprav. Nikdy
-              nezapomenete na důležité termíny, rezervace nebo nákupy.
+              {dict.products.basic.checklistsDesc}
             </p>
 
             <h3 className="text-2xl font-semibold mb-4 text-black">
-              💰 Budgetové tabulky
+              💰 {dict.products.basic.features.budget}
             </h3>
             <p className="text-gray-700 mb-6">
-              Přehledné sledování výdajů podle kategorií s grafy a tipy na
-              úspory. Mějte vždy přehled o svém rozpočtu.
+              {dict.products.basic.budgetDesc}
             </p>
           </div>
 
           <div>
             <h3 className="text-2xl font-semibold mb-4 text-black">
-              👥 Seznam hostů a RSVP
+              👥 {dict.products.basic.features.guests}
             </h3>
             <p className="text-gray-700 mb-6">
-              Kompletní systém pro správu pozvánek, sledování odpovědí a
-              speciálních požadavků hostů.
+              {dict.products.basic.guestsDesc}
             </p>
 
             <h3 className="text-2xl font-semibold mb-4 text-black">
-              ⏰ Harmonogram svatebního dne
+              ⏰ {dict.products.basic.features.timeline}
             </h3>
             <p className="text-gray-700 mb-6">
-              Detailní timeline celého dne s časovými rezervami a prostorem pro
-              poznámky. Profesionální tipy pro hladký průběh.
+              {dict.products.basic.timelineDesc}
             </p>
 
             <h3 className="text-2xl font-semibold mb-4 text-black">
-              💡 Profesionální tipy a rady
+              💡 {dict.products.basic.features.tips}
             </h3>
-            <p className="text-gray-700 mb-6">
-              Rady od wedding plannerů pro řešení běžných situací a krizových
-              scénářů během příprav i samotného dne.
-            </p>
+            <p className="text-gray-700 mb-6">{dict.products.basic.tipsDesc}</p>
 
             <h3 className="text-2xl font-semibold mb-4 text-black">
-              📝 Poznámky a nápady
+              📝 {dict.products.basic.features.notes}
             </h3>
             <p className="text-gray-700 mb-6">
-              Prostor pro vaše osobní poznámky, nápady a inspiraci během celého
-              procesu plánování svatby.
+              {dict.products.basic.notesDesc}
             </p>
           </div>
         </div>
@@ -156,16 +150,18 @@ export default async function BasicDiaryPage({
       {/* Features Grid */}
       <div className="mb-16">
         <h2 className="text-3xl font-bold text-center mb-12 text-black">
-          Všechno, co potřebujete pro dokonalou svatbu
+          {dict.products.premium.everythingYouNeed}
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="text-center bg-white p-6 rounded-xl shadow-lg border border-gray-200">
             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">📅</span>
             </div>
-            <h3 className="font-semibold mb-3 text-black">Měsíční plány</h3>
+            <h3 className="font-semibold mb-3 text-black">
+              {dict.products.premium.monthlyPlans}
+            </h3>
             <p className="text-gray-700 text-sm">
-              Strukturované checklists pro každý měsíc příprav
+              {dict.products.premium.monthlyPlansDesc}
             </p>
           </div>
 
@@ -173,9 +169,11 @@ export default async function BasicDiaryPage({
             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">💰</span>
             </div>
-            <h3 className="font-semibold mb-3 text-black">Budget tracker</h3>
+            <h3 className="font-semibold mb-3 text-black">
+              {dict.products.premium.budgetTracker}
+            </h3>
             <p className="text-gray-700 text-sm">
-              Přehledné sledování výdajů s grafy
+              {dict.products.premium.budgetTrackerDesc}
             </p>
           </div>
 
@@ -183,9 +181,11 @@ export default async function BasicDiaryPage({
             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">👥</span>
             </div>
-            <h3 className="font-semibold mb-3 text-black">Seznam hostů</h3>
+            <h3 className="font-semibold mb-3 text-black">
+              {dict.products.premium.guestManagement}
+            </h3>
             <p className="text-gray-700 text-sm">
-              RSVP sledování a kontaktní informace
+              {dict.products.premium.guestManagementDesc}
             </p>
           </div>
 
@@ -193,9 +193,11 @@ export default async function BasicDiaryPage({
             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">⏰</span>
             </div>
-            <h3 className="font-semibold mb-3 text-black">Harmonogram</h3>
+            <h3 className="font-semibold mb-3 text-black">
+              {dict.products.premium.timeline}
+            </h3>
             <p className="text-gray-700 text-sm">
-              Detailní timeline svatebního dne
+              {dict.products.premium.timelineDesc}
             </p>
           </div>
 
@@ -204,10 +206,10 @@ export default async function BasicDiaryPage({
               <span className="text-2xl">💡</span>
             </div>
             <h3 className="font-semibold mb-3 text-black">
-              Profesionální tipy
+              {dict.products.premium.professionalTips}
             </h3>
             <p className="text-gray-700 text-sm">
-              Rady pro řešení běžných situací
+              {dict.products.premium.professionalTipsDesc}
             </p>
           </div>
 
@@ -215,9 +217,11 @@ export default async function BasicDiaryPage({
             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">📝</span>
             </div>
-            <h3 className="font-semibold mb-3 text-black">Osobní poznámky</h3>
+            <h3 className="font-semibold mb-3 text-black">
+              {dict.products.premium.personalNotes}
+            </h3>
             <p className="text-gray-700 text-sm">
-              Prostor pro vaše myšlenky a nápady
+              {dict.products.premium.personalNotesDesc}
             </p>
           </div>
         </div>
@@ -226,13 +230,13 @@ export default async function BasicDiaryPage({
       {/* Sample Images */}
       <div className="mb-16">
         <h2 className="text-3xl font-bold text-center mb-12 text-black">
-          Podívejte se na ukázky
+          {dict.products.premium.seeSamples}
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
             <Image
               src="/assets/thumbnail_IMG_5264.png"
-              alt="Ukázka stránky deníku"
+              alt={dict.products.premium.samplePage}
               fill
               className="object-cover hover:scale-105 transition-transform duration-300"
             />
@@ -240,7 +244,7 @@ export default async function BasicDiaryPage({
           <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
             <Image
               src="/assets/thumbnail_IMG_5264.png"
-              alt="Rozpočtové tabulky"
+              alt={dict.products.premium.budgetTables}
               fill
               className="object-cover hover:scale-105 transition-transform duration-300"
             />
@@ -248,7 +252,7 @@ export default async function BasicDiaryPage({
           <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
             <Image
               src="/assets/thumbnail_IMG_5264.png"
-              alt="Checklists a plány"
+              alt={dict.products.premium.checklists}
               fill
               className="object-cover hover:scale-105 transition-transform duration-300"
             />
@@ -264,42 +268,30 @@ export default async function BasicDiaryPage({
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
             <h3 className="text-xl font-semibold mb-3 text-black">
-              😌 Bez stresu
+              😌 {dict.benefits.stressFree.title}
             </h3>
-            <p className="text-gray-700">
-              Mějte všechno pod kontrolou. S naším deníkem nikdy nezapomenete na
-              důležité termíny nebo úkoly.
-            </p>
+            <p className="text-gray-700">{dict.benefits.stressFree.desc}</p>
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
             <h3 className="text-xl font-semibold mb-3 text-black">
-              💎 Elegantní design
+              💎 {dict.benefits.elegantDesign.title}
             </h3>
-            <p className="text-gray-700">
-              Profesionálně navržený deník, který vypadá skvěle a je radost ho
-              používat během plánování.
-            </p>
+            <p className="text-gray-700">{dict.benefits.elegantDesign.desc}</p>
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
             <h3 className="text-xl font-semibold mb-3 text-black">
-              💕 Celoživotní vzpomínka
+              💕 {dict.benefits.lifetimeMemory.title}
             </h3>
-            <p className="text-gray-700">
-              Uchovejte si všechny vzpomínky z příprav vaší svatby v krásném a
-              praktickém deníku.
-            </p>
+            <p className="text-gray-700">{dict.benefits.lifetimeMemory.desc}</p>
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
             <h3 className="text-xl font-semibold mb-3 text-black">
-              🎁 Dokonalý dárek
+              🎁 {dict.benefits.perfectGift.title}
             </h3>
-            <p className="text-gray-700">
-              Ideální dárek pro nevěstu nebo ženicha, který jim pomůže
-              zorganizovat jejich speciální den.
-            </p>
+            <p className="text-gray-700">{dict.benefits.perfectGift.desc}</p>
           </div>
         </div>
       </div>
@@ -312,28 +304,52 @@ export default async function BasicDiaryPage({
         <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-200 max-w-2xl mx-auto">
           <div className="space-y-4">
             <div className="flex justify-between items-center py-2 border-b border-gray-100">
-              <span className="font-medium text-black">Formát:</span>
-              <span className="text-gray-700">A5 (148 × 210 mm)</span>
+              <span className="font-medium text-black">
+                {dict.parameters.format}:
+              </span>
+              <span className="text-gray-700">
+                {dict.parameters.formatValue}
+              </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-gray-100">
-              <span className="font-medium text-black">Počet stran:</span>
-              <span className="text-gray-700">120 stran</span>
+              <span className="font-medium text-black">
+                {dict.parameters.pages}:
+              </span>
+              <span className="text-gray-700">
+                {dict.parameters.pagesValue}
+              </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-gray-100">
-              <span className="font-medium text-black">Vazba:</span>
-              <span className="text-gray-700">Kvalitní lepená vazba</span>
+              <span className="font-medium text-black">
+                {dict.parameters.binding}:
+              </span>
+              <span className="text-gray-700">
+                {dict.parameters.bindingValue}
+              </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-gray-100">
-              <span className="font-medium text-black">Papír:</span>
-              <span className="text-gray-700">100g matný papír</span>
+              <span className="font-medium text-black">
+                {dict.parameters.paper}:
+              </span>
+              <span className="text-gray-700">
+                {dict.parameters.paperValue}
+              </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-gray-100">
-              <span className="font-medium text-black">Jazyk:</span>
-              <span className="text-gray-700">Čeština</span>
+              <span className="font-medium text-black">
+                {dict.parameters.language}:
+              </span>
+              <span className="text-gray-700">
+                {locale === "cs" ? "Čeština" : "English"}
+              </span>
             </div>
             <div className="flex justify-between items-center py-2">
-              <span className="font-medium text-black">Doprava:</span>
-              <span className="text-gray-700">Zdarma po ČR</span>
+              <span className="font-medium text-black">
+                {dict.parameters.shipping}:
+              </span>
+              <span className="text-gray-700">
+                {locale === "cs" ? "Zdarma po ČR" : "Free shipping in EU"}
+              </span>
             </div>
           </div>
         </div>
@@ -346,12 +362,12 @@ export default async function BasicDiaryPage({
           {dict.cta.description}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <BuyButton priceId={product.priceId} />
+          <BuyButton priceId={product.priceId} dict={dict} />
           <a
             href={`/${locale}/kontakt`}
             className="border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-4 px-8 rounded-lg transition"
           >
-            Mám dotazy
+            {dict.common.questions}
           </a>
         </div>
       </div>

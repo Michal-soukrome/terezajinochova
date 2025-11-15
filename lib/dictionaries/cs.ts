@@ -10,6 +10,7 @@ export const dictionary = {
     loading: "Načítání...",
     error: "Chyba",
     success: "Úspěch",
+    viewDetails: "Zobrazit detaily",
   },
   home: {
     title: "Svatební deník – Od zásnub až k oltáři",
@@ -38,6 +39,7 @@ export const dictionary = {
         tips: "💡 Profesionální tipy a rady",
         notes: "📝 Poznámky a nápady",
       },
+      whatYouGet: "Co dostanete:",
       whatYouFind: "Co v deníku najdeš?",
       checklistsDesc:
         "Strukturované seznamy úkolů pro každý měsíc příprav. Nikdy nezapomenete na důležité termíny, rezervace nebo nákupy.",
@@ -57,6 +59,14 @@ export const dictionary = {
       description:
         "Luxusní svatební deník s prémiovým balením a speciálními funkcemi",
       price: "1 490 Kč",
+      features: {
+        everythingFromBasic: "Vše ze základní verze",
+        luxuryPackaging: "Luxusní dárkové balení",
+        personalMessage: "Kartička s osobním věnováním",
+        premiumBinding: "Prémiová vazba",
+        goldenFoil: "Zlatá fólie",
+        fastDelivery: "Dodání do 3 dnů",
+      },
       giftMessage: "Dokonalý dárek pro vaši drahou polovičku",
       premiumFeatures: "Prémiové funkce",
       luxuryPackaging: "Luxusní balení",

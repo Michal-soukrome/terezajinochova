@@ -35,22 +35,22 @@ export default async function HomePage({
         <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-gray-200">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold mb-2 text-black">
-              {PRODUCTS.basic.name}
+              {dict.products.basic.name}
             </h2>
-            <p className="text-gray-600">{PRODUCTS.basic.description}</p>
+            <p className="text-gray-600">{dict.products.basic.description}</p>
           </div>
 
           <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
             <Image
               src={PRODUCTS.basic.image}
-              alt={PRODUCTS.basic.name}
+              alt={dict.products.basic.name}
               fill
               className="object-cover"
             />
           </div>
 
           <ul className="space-y-3 mb-8">
-            {PRODUCTS.basic.features.map((feature, i) => (
+            {Object.values(dict.products.basic.features).map((feature, i) => (
               <li key={i} className="flex items-start">
                 <span className="text-black mr-2">✓</span>
                 <span className="text-gray-700">{feature}</span>
@@ -61,16 +61,15 @@ export default async function HomePage({
           <div className="border-t border-gray-200 pt-6">
             <div className="text-center mb-4">
               <span className="text-4xl font-bold text-black">
-                {PRODUCTS.basic.price} Kč
+                {dict.products.basic.price}
               </span>
             </div>
             <div className="space-y-3">
-              <BuyButton priceId={PRODUCTS.basic.priceId} />
               <a
                 href={`/${locale}/zakladni`}
                 className="block w-full text-center border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-6 rounded-lg transition"
               >
-                Zobrazit detaily
+                {dict.common.viewDetails}
               </a>
             </div>
           </div>
@@ -80,27 +79,27 @@ export default async function HomePage({
         <div className="bg-gray-50 rounded-2xl shadow-xl p-8 border-2 border-gray-300 relative">
           {/* Popular badge */}
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-1 rounded-full text-sm font-semibold">
-            Nejoblíbenější
+            {dict.products.premium.popularChoice}
           </div>
 
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold mb-2 text-black">
-              {PRODUCTS.premium.name}
+              {dict.products.premium.name}
             </h2>
-            <p className="text-gray-600">{PRODUCTS.premium.description}</p>
+            <p className="text-gray-600">{dict.products.premium.description}</p>
           </div>
 
           <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
             <Image
               src={PRODUCTS.premium.image}
-              alt={PRODUCTS.premium.name}
+              alt={dict.products.premium.name}
               fill
               className="object-cover"
             />
           </div>
 
           <ul className="space-y-3 mb-8">
-            {PRODUCTS.premium.features.map((feature, i) => (
+            {Object.values(dict.products.premium.features).map((feature, i) => (
               <li key={i} className="flex items-start">
                 <span className="text-black mr-2">★</span>
                 <span className="text-gray-700 font-medium">{feature}</span>
@@ -111,17 +110,18 @@ export default async function HomePage({
           <div className="border-t border-gray-300 pt-6">
             <div className="text-center mb-4">
               <span className="text-4xl font-bold text-black">
-                {PRODUCTS.premium.price} Kč
+                {dict.products.premium.price}
               </span>
-              <p className="text-sm text-gray-600 mt-1">Ideální jako dárek</p>
+              <p className="text-sm text-gray-600 mt-1">
+                {dict.products.premium.giftMessage}
+              </p>
             </div>
             <div className="space-y-3">
-              <BuyButton priceId={PRODUCTS.premium.priceId} />
               <a
                 href={`/${locale}/premium`}
                 className="block w-full text-center border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-6 rounded-lg transition"
               >
-                Zobrazit detaily
+                {dict.common.viewDetails}
               </a>
             </div>
           </div>

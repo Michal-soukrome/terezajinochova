@@ -42,7 +42,7 @@ export default async function PremiumDiaryPage({ params }: PremiumPageProps) {
           <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-xl">
             <Image
               src={product.image}
-              alt={product.name}
+              alt={dict.products.premium.name}
               fill
               className="object-cover"
               priority
@@ -82,7 +82,7 @@ export default async function PremiumDiaryPage({ params }: PremiumPageProps) {
           </div>
 
           <div className="mb-8">
-            <BuyButton priceId={product.priceId} />
+            <BuyButton priceId={product.priceId} dict={dict} />
           </div>
 
           {/* Key Features */}
@@ -91,12 +91,14 @@ export default async function PremiumDiaryPage({ params }: PremiumPageProps) {
               {dict.products.premium.premiumPackageIncludes}
             </h3>
             <ul className="space-y-3">
-              {product.features.map((feature, i) => (
-                <li key={i} className="flex items-start">
-                  <span className="text-black mr-3 text-lg">★</span>
-                  <span className="text-gray-700 font-medium">{feature}</span>
-                </li>
-              ))}
+              {Object.values(dict.products.premium.features).map(
+                (feature, i) => (
+                  <li key={i} className="flex items-start">
+                    <span className="text-black mr-3 text-lg">★</span>
+                    <span className="text-gray-700 font-medium">{feature}</span>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         </div>
@@ -305,7 +307,7 @@ export default async function PremiumDiaryPage({ params }: PremiumPageProps) {
             {dict.products.premium.perfectWeddingGiftDesc}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <BuyButton priceId={product.priceId} />
+            <BuyButton priceId={product.priceId} dict={dict} />
             <a
               href={`/${locale}/kontakt`}
               className="border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-4 px-8 rounded-lg transition"
@@ -325,7 +327,7 @@ export default async function PremiumDiaryPage({ params }: PremiumPageProps) {
           {dict.products.premium.readyToStartDesc}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <BuyButton priceId={product.priceId} />
+          <BuyButton priceId={product.priceId} dict={dict} />
           <a
             href={`/${locale}/kontakt`}
             className="border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-4 px-8 rounded-lg transition"

@@ -1,20 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import "@/app/globals.css";
 import Header from "@/components/Header";
 import { getDictionary } from "@/lib/dictionaries";
 import { notFound } from "next/navigation";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "700"],
-});
 
 export async function generateMetadata({
   params,
@@ -133,26 +121,22 @@ export default async function LocaleLayout({
   const dict = await getDictionary(locale);
 
   return (
-    <html lang={locale}>
-      <body
-        className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
-      >
-        <Header locale={locale} dict={dict} />
+    <>
+      <Header locale={locale} dict={dict} />
 
-        <main>{children}</main>
+      <main>{children}</main>
 
-        <footer className="bg-gray-800 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="text-center">
-              <p className="text-gray-400">
-                {locale === "cs"
-                  ? "© 2024 Svatební Deník. Všechna práva vyhrazena."
-                  : "© 2024 Wedding Diary. All rights reserved."}
-              </p>
-            </div>
+      <footer className="bg-gray-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="text-center">
+            <p className="text-gray-400">
+              {locale === "cs"
+                ? "© 2024 Svatební Deník. Všechna práva vyhrazena."
+                : "© 2024 Wedding Diary. All rights reserved."}
+            </p>
           </div>
-        </footer>
-      </body>
-    </html>
+        </div>
+      </footer>
+    </>
   );
 }

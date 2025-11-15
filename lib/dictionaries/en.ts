@@ -10,6 +10,7 @@ export const dictionary = {
     loading: "Loading...",
     error: "Error",
     success: "Success",
+    viewDetails: "View Details",
   },
   home: {
     title: "Wedding Diary – From Engagement to the Altar",
@@ -38,6 +39,7 @@ export const dictionary = {
         tips: "💡 Professional tips and advice",
         notes: "📝 Notes and ideas",
       },
+      whatYouGet: "What you get:",
       whatYouFind: "What you'll find in the diary?",
       checklistsDesc:
         "Structured task lists for each month of preparation. Never forget important dates, reservations, or purchases.",
@@ -57,6 +59,14 @@ export const dictionary = {
       description:
         "Luxury wedding diary with premium packaging and special features",
       price: "€45",
+      features: {
+        everythingFromBasic: "Everything from basic version",
+        luxuryPackaging: "Luxury gift packaging",
+        personalMessage: "Personal dedication card",
+        premiumBinding: "Premium binding",
+        goldenFoil: "Gold foil",
+        fastDelivery: "Delivery within 3 days",
+      },
       giftMessage: "Perfect gift for your loved one",
       premiumFeatures: "Premium features",
       luxuryPackaging: "Luxury packaging",
