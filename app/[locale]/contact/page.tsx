@@ -1,56 +1,25 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { getDictionary } from "@/lib/dictionaries";
+import { dictionaries } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 
-interface ContactPageProps {
+export default async function ContactPage({
+  params,
+}: {
   params: Promise<{ locale: string }>;
-}
+}) {
+  const { locale } = await params;
 
-export default function ContactPage({ params }: ContactPageProps) {
-  const [locale, setLocale] = useState<string>("");
-  const [dict, setDict] = useState<any>(null);
-  const [submitted, setSubmitted] = useState(false);
-
-  // Load dictionary on client side
-  useEffect(() => {
-    params.then(async ({ locale: loc }) => {
-      setLocale(loc);
-      if (loc !== "cs" && loc !== "en") {
-        notFound();
-      }
-      const dictionary = await getDictionary(loc as "cs" | "en");
-      setDict(dictionary);
-    });
-  }, [params]);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // For MVP: Just show success message
-    // In production, connect to Formspree, Netlify Forms, or your email service
-    setSubmitted(true);
-  };
-
-  if (!dict) {
-    return <div>Loading...</div>;
+  if (locale !== "cs" && locale !== "en") {
+    notFound();
   }
 
-  if (submitted) {
-    return (
-      <div className="max-w-2xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-4xl font-bold mb-4">{dict.success.title}</h1>
-        <p className="text-lg text-gray-600">{dict.contact.description}</p>
-      </div>
-    );
-  }
+  const dict = dictionaries[locale as "cs" | "en"];
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold mb-4">{dict.contact.title}</h1>
       <p className="text-lg text-gray-600 mb-8">{dict.contact.description}</p>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form className="space-y-6">
         <div>
           <label
             htmlFor="name"
@@ -122,4 +91,8 @@ export default function ContactPage({ params }: ContactPageProps) {
       </div>
     </div>
   );
+}
+
+export function generateStaticParams() {
+  return [{ locale: "cs" }, { locale: "en" }];
 }

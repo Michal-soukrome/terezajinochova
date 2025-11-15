@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { PRODUCTS } from "@/lib/products";
-import BuyButton from "@/components/BuyButton";
-import { getDictionary } from "@/lib/dictionaries";
-import { getLocalizedPath } from "@/lib/routes";
+import { dictionaries, getLink } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 
 export default async function HomePage({
@@ -17,7 +15,7 @@ export default async function HomePage({
     notFound();
   }
 
-  const dict = await getDictionary(locale);
+  const dict = dictionaries[locale as "cs" | "en"];
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
       {/* Hero Section */}
@@ -67,7 +65,7 @@ export default async function HomePage({
             </div>
             <div className="space-y-3">
               <a
-                href={getLocalizedPath("basic", locale as "cs" | "en")}
+                href={getLink(locale as "cs" | "en", "basic")}
                 className="block w-full text-center border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-6 rounded-lg transition"
               >
                 {dict.common.viewDetails}
@@ -78,11 +76,6 @@ export default async function HomePage({
 
         {/* Premium Version */}
         <div className="bg-gray-50 rounded-2xl shadow-xl p-8 border-2 border-gray-300 relative">
-          {/* Popular badge */}
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-1 rounded-full text-sm font-semibold">
-            {dict.products.premium.popularChoice}
-          </div>
-
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold mb-2 text-black">
               {dict.products.premium.name}
@@ -113,13 +106,10 @@ export default async function HomePage({
               <span className="text-4xl font-bold text-black">
                 {dict.products.premium.price}
               </span>
-              <p className="text-sm text-gray-600 mt-1">
-                {dict.products.premium.giftMessage}
-              </p>
             </div>
             <div className="space-y-3">
               <a
-                href={`/${locale}/premium`}
+                href={getLink(locale as "cs" | "en", "premium")}
                 className="block w-full text-center border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-6 rounded-lg transition"
               >
                 {dict.common.viewDetails}
@@ -230,7 +220,7 @@ export default async function HomePage({
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href={getLocalizedPath("contact", locale as "cs" | "en")}
+            href={getLink(locale as "cs" | "en", "contact")}
             className="bg-black hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-lg transition shadow-lg"
           >
             {dict.common.contact}

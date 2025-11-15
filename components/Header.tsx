@@ -3,31 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { type Locale } from "@/i18n";
-import { getLocalizedPath } from "@/lib/routes";
+import { type Locale, getLink, dictionaries } from "@/lib/i18n";
 
 interface HeaderProps {
   locale: Locale;
 }
 
-// Client-side translations (for header navigation)
-const translations = {
-  cs: {
-    home: "Domů",
-    basic: "Základní",
-    premium: "Prémiový",
-    contact: "Kontakt",
-  },
-  en: {
-    home: "Home",
-    basic: "Basic",
-    premium: "Premium",
-    contact: "Contact",
-  },
-};
-
 export default function Header({ locale }: HeaderProps) {
-  const t = translations[locale];
+  const t = dictionaries[locale].common;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -56,19 +39,19 @@ export default function Header({ locale }: HeaderProps) {
                 {t.home}
               </Link>
               <Link
-                href={getLocalizedPath("basic", locale)}
+                href={getLink(locale, "basic")}
                 className="text-gray-600 hover:text-gray-900 transition-colors"
               >
                 {t.basic}
               </Link>
               <Link
-                href={getLocalizedPath("premium", locale)}
+                href={getLink(locale, "premium")}
                 className="text-gray-600 hover:text-gray-900 transition-colors"
               >
                 {t.premium}
               </Link>
               <Link
-                href={getLocalizedPath("contact", locale)}
+                href={getLink(locale, "contact")}
                 className="text-gray-600 hover:text-gray-900 transition-colors"
               >
                 {t.contact}
@@ -123,21 +106,21 @@ export default function Header({ locale }: HeaderProps) {
               {t.home}
             </Link>
             <Link
-              href={getLocalizedPath("basic", locale)}
+              href={getLink(locale, "basic")}
               className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
               onClick={closeMenu}
             >
               {t.basic}
             </Link>
             <Link
-              href={getLocalizedPath("premium", locale)}
+              href={getLink(locale, "premium")}
               className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
               onClick={closeMenu}
             >
               {t.premium}
             </Link>
             <Link
-              href={getLocalizedPath("contact", locale)}
+              href={getLink(locale, "contact")}
               className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
               onClick={closeMenu}
             >

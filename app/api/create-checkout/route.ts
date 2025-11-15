@@ -3,7 +3,7 @@ import { stripe } from "@/lib/stripe";
 import { PRODUCTS } from "@/lib/products";
 import { SecureLogger } from "@/lib/secure-logger";
 import { getBaseUrl } from "@/lib/env";
-import { locales } from "@/i18n";
+import { locales } from "@/lib/i18n";
 
 export async function POST(request: NextRequest) {
   // Get client IP for logging

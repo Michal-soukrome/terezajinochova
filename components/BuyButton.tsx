@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { useParams } from "next/navigation";
 import { LoadingSpinner } from "./Loading";
-import { type Locale } from "@/i18n";
+import { type Locale } from "@/lib/i18n";
 
 interface BuyButtonProps {
   priceId: string;
@@ -14,6 +14,7 @@ interface BuyButtonProps {
       loading: string;
     };
   };
+  locale: "cs" | "en";
   className?: string;
   onCheckout?: () => void;
 }
@@ -21,12 +22,10 @@ interface BuyButtonProps {
 export default function BuyButton({
   priceId,
   dict,
+  locale,
   className = "",
   onCheckout,
 }: BuyButtonProps) {
-  const params = useParams();
-  const locale = (params?.locale as Locale) || "cs";
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

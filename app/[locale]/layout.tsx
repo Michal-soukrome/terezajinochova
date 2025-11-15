@@ -1,23 +1,9 @@
 // app/[locale]/layout.tsx
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import Header from "@/components/Header";
 import { notFound } from "next/navigation";
-import { locales, type Locale } from "@/i18n";
+import { locales, type Locale } from "@/lib/i18n";
 import RouteChangeLoader from "@/components/RouteChangeLoader";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "700"],
-  display: "swap",
-});
 
 // Static base metadata
 const baseMetadata = {
@@ -104,26 +90,28 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html lang={typedLocale}>
-      <body className="font-sans antialiased">
-        <Header locale={typedLocale} />
-        <main className="relative">
-          <RouteChangeLoader />
-          {children}
-        </main>
+    <>
+      <Header locale={typedLocale} />
+      <main className="relative">
+        <RouteChangeLoader />
+        {children}
+      </main>
 
-        <footer className="bg-gray-800 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="text-center">
-              <p className="text-gray-400">
-                {typedLocale === "cs"
-                  ? "© 2024 Svatební Deník. Všechna práva vyhrazena."
-                  : "© 2024 Wedding Diary. All rights reserved."}
-              </p>
-            </div>
+      <footer className="bg-gray-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="text-center">
+            <p className="text-gray-400">
+              {typedLocale === "cs"
+                ? "© 2024 Svatební Deník. Všechna práva vyhrazena."
+                : "© 2024 Wedding Diary. All rights reserved."}
+            </p>
           </div>
-        </footer>
-      </body>
-    </html>
+        </div>
+      </footer>
+    </>
   );
+}
+
+export function generateStaticParams() {
+  return [{ locale: "cs" }, { locale: "en" }];
 }

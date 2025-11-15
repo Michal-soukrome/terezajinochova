@@ -1,23 +1,11 @@
 terezajinochova
 ├── .env.local
-├── .filetreeignore
-├── CHANGELOG.md
-├── KNOWN_ISSUES.md
-├── README.md
-├── RECAP.md
-├── STATUS.md
-├── TECHNICAL_DOCS.md
 ├── app
 │   ├── [locale]
-│   │   ├── cancel
-│   │   ├── kontakt
-│   │   ├── page.tsx
-│   │   ├── premium
-│   │   ├── success
-│   │   └── zakladni
+│   │   ├── (pages)
+│   │   ├── [slug]
+│   │   └── page.tsx
 │   ├── api
-│   │   ├── download
-│   │   ├── validate-session
 │   │   └── webhook
 │   ├── favicon.ico
 │   ├── globals.css
@@ -27,30 +15,26 @@ terezajinochova
 ├── components
 │   ├── BuyButton.tsx
 │   ├── Header.tsx
+│   ├── HtmlTag.tsx
 │   ├── LanguageSwitcher.tsx
 │   ├── Loading.tsx
 ├── eslint.config.mjs
 ├── filetree.txt
-├── i18n.ts
 ├── lib
-│   ├── dictionaries
+│   ├── env.ts
+│   ├── i18n
 │   │   ├── cs.ts
 │   │   ├── en.ts
 │   │   └── index.ts
-│   ├── env.ts
 │   ├── products.ts
 │   ├── secure-logger.ts
 │   └── stripe.ts
-├── middleware
-│   └── index.ts
+├── middleware.ts
 ├── next-env.d.ts
 ├── next.config.ts
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.mjs
-├── private
-│   └── products
-│       └── README.md
 ├── public
 │   ├── assets
 │   │   └── thumbnail_IMG_5264.png
@@ -63,7 +47,5 @@ terezajinochova
 │   ├── robots.txt
 │   ├── sitemap.xml
 │   └── window.svg
-├── scripts
-│   └── verify-stripe-prices.ts
 ├── tailwind.config.js
 ├── tsconfig.json
