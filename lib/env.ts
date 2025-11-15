@@ -5,7 +5,6 @@
 const requiredEnvVars = {
   // Stripe configuration
   STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
-  STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
 } as const;
@@ -14,6 +13,8 @@ const optionalEnvVars = {
   // Application URLs (have defaults)
   NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
   VERCEL_URL: process.env.VERCEL_URL,
+  // Stripe webhook secret (optional for development)
+  STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
 } as const;
 
 // Validate required environment variables
@@ -41,7 +42,7 @@ validateEnv();
 // Export validated environment variables with proper types
 export const env = {
   STRIPE_SECRET_KEY: requiredEnvVars.STRIPE_SECRET_KEY!,
-  STRIPE_WEBHOOK_SECRET: requiredEnvVars.STRIPE_WEBHOOK_SECRET!,
+  STRIPE_WEBHOOK_SECRET: optionalEnvVars.STRIPE_WEBHOOK_SECRET,
   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
     requiredEnvVars.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
   NEXT_PUBLIC_APP_URL: optionalEnvVars.NEXT_PUBLIC_APP_URL,

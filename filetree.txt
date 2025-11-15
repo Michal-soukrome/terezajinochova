@@ -1,4 +1,5 @@
 terezajinochova
+├── .env.local
 ├── .filetreeignore
 ├── CHANGELOG.md
 ├── KNOWN_ISSUES.md
@@ -38,10 +39,10 @@ terezajinochova
 │   │   └── index.ts
 │   ├── env.ts
 │   ├── products.ts
-│   ├── rate-limit.ts
 │   ├── secure-logger.ts
 │   └── stripe.ts
-├── middleware.ts
+├── middleware
+│   └── index.ts
 ├── next-env.d.ts
 ├── next.config.ts
 ├── package-lock.json

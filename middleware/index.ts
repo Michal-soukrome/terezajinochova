@@ -1,48 +1,48 @@
 // middleware/index.ts
 import { NextRequest, NextResponse } from "next/server";
-import { locales, defaultLocale, type Locale } from "../i18n";
+import { locales, defaultLocale } from "../i18n";
+import { routes } from "../lib/routes";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Extract locale from pathname
-  const pathnameLocale = pathname.split("/")[1] as Locale;
-
-  // Check if the pathname contains a valid locale
-  const hasValidLocale = locales.some(
+  // Check if pathname contains a valid locale
+  const hasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  // If pathname has a valid locale, allow it through
-  if (hasValidLocale) {
-    return NextResponse.next();
-  }
-
-  // Check if pathname has an invalid locale (exists but not in our list)
-  const hasInvalidLocale =
-    pathname.startsWith("/") &&
-    pathname.split("/")[1] &&
-    pathname.split("/")[1].length === 2 &&
-    !locales.includes(pathnameLocale);
-
-  // If invalid locale detected, redirect to default locale
-  if (hasInvalidLocale) {
-    const pathWithoutLocale = pathname.split("/").slice(2).join("/");
-    const newUrl = new URL(
-      `/${defaultLocale}/${pathWithoutLocale}`,
-      request.url
+  // If no locale, redirect to default locale
+  if (!hasLocale) {
+    return NextResponse.redirect(
+      new URL(`/${defaultLocale}${pathname}`, request.url)
     );
-    return NextResponse.redirect(newUrl);
   }
 
-  // No locale in pathname, redirect to default locale
-  const newUrl = new URL(`/${defaultLocale}${pathname}`, request.url);
-  return NextResponse.redirect(newUrl);
+  // Extract locale and path segment
+  const segments = pathname.split("/").filter(Boolean);
+  const locale = segments[0] as "cs" | "en";
+  const pathSegment = segments[1];
+
+  // If no path segment (just locale), allow through
+  if (!pathSegment) return NextResponse.next();
+
+  // Check if this is a localized route that needs rewriting
+  for (const [routeKey, localeMap] of Object.entries(routes)) {
+    if (localeMap[locale] === pathSegment) {
+      const canonicalPath = `/${locale}/${routeKey}`;
+      if (pathname !== canonicalPath) {
+        const url = request.nextUrl.clone();
+        url.pathname = canonicalPath;
+        return NextResponse.rewrite(url);
+      }
+    }
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next, api, assets)
     "/((?!api|_next|_vercel|assets|images|products|robots.txt|sitemap.xml|favicon.ico|.*\\..*).*)",
   ],
 };

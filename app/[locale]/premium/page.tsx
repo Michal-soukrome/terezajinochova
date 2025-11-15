@@ -2,6 +2,7 @@ import Image from "next/image";
 import { PRODUCTS } from "@/lib/products";
 import BuyButton from "@/components/BuyButton";
 import { getDictionary } from "@/lib/dictionaries";
+import { getLocalizedPath } from "@/lib/routes";
 
 interface PremiumPageProps {
   params: Promise<{ locale: string }>;
@@ -288,7 +289,7 @@ export default async function PremiumDiaryPage({ params }: PremiumPageProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <BuyButton priceId={product.stripePriceId} dict={dict} />
             <a
-              href={`/${locale}/kontakt`}
+              href={getLocalizedPath("contact", locale as "cs" | "en")}
               className="border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-4 px-8 rounded-lg transition"
             >
               {dict.products.premium.giftAsPresent}
@@ -308,7 +309,7 @@ export default async function PremiumDiaryPage({ params }: PremiumPageProps) {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <BuyButton priceId={product.stripePriceId} dict={dict} />
           <a
-            href={`/${locale}/kontakt`}
+            href={getLocalizedPath("contact", locale as "cs" | "en")}
             className="border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-4 px-8 rounded-lg transition"
           >
             {dict.products.premium.haveQuestions}

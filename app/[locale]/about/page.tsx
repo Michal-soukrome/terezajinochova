@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getDictionary } from "@/lib/dictionaries";
+import { getLocalizedPath } from "@/lib/routes";
 
 interface AboutPageProps {
   params: Promise<{ locale: string }>;
@@ -40,7 +41,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
         </p>
         <div className="text-center">
           <Link
-            href={`/${locale}/kontakt`}
+            href={getLocalizedPath("contact", locale as "cs" | "en")}
             className="inline-block bg-black text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition shadow-lg"
           >
             {dict.aboutMe.bookConsultation}

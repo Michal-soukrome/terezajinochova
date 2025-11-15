@@ -2,6 +2,7 @@ import Image from "next/image";
 import { PRODUCTS } from "@/lib/products";
 import BuyButton from "@/components/BuyButton";
 import { getDictionary } from "@/lib/dictionaries";
+import { getLocalizedPath } from "@/lib/routes";
 import { notFound } from "next/navigation";
 
 export default async function HomePage({
@@ -66,7 +67,7 @@ export default async function HomePage({
             </div>
             <div className="space-y-3">
               <a
-                href={`/${locale}/zakladni`}
+                href={getLocalizedPath("basic", locale as "cs" | "en")}
                 className="block w-full text-center border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-6 rounded-lg transition"
               >
                 {dict.common.viewDetails}
@@ -229,7 +230,7 @@ export default async function HomePage({
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href={`/${locale}/kontakt`}
+            href={getLocalizedPath("contact", locale as "cs" | "en")}
             className="bg-black hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-lg transition shadow-lg"
           >
             {dict.common.contact}
