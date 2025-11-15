@@ -1,0 +1,13 @@
+# .filetreeignore
+node_modules
+.next
+out
+dist
+.git
+.vercel
+coverage
+.gitattributes
+.gitignore
+package-lock.json
+next-env.d.ts
+*.log

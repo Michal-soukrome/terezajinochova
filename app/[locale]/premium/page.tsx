@@ -14,27 +14,6 @@ export default async function PremiumDiaryPage({ params }: PremiumPageProps) {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      {/* Breadcrumb */}
-      <nav className="mb-8">
-        <ol className="flex items-center gap-2 text-sm text-gray-600 flex-wrap">
-          <li>
-            <a href={`/${locale}`} className="hover:text-black">
-              {dict.products.premium.breadcrumb.home}
-            </a>
-          </li>
-          <li>/</li>
-          <li>
-            <a href={`/${locale}/denik`} className="hover:text-black">
-              {dict.products.premium.breadcrumb.diary}
-            </a>
-          </li>
-          <li>/</li>
-          <li className="text-black font-medium">
-            {dict.products.premium.breadcrumb.premium}
-          </li>
-        </ol>
-      </nav>
-
       {/* Product Header */}
       <div className="grid lg:grid-cols-2 gap-12 mb-16">
         {/* Product Image */}
@@ -82,7 +61,7 @@ export default async function PremiumDiaryPage({ params }: PremiumPageProps) {
           </div>
 
           <div className="mb-8">
-            <BuyButton priceId={product.priceId} dict={dict} />
+            <BuyButton priceId={product.stripePriceId} dict={dict} />
           </div>
 
           {/* Key Features */}
@@ -307,7 +286,7 @@ export default async function PremiumDiaryPage({ params }: PremiumPageProps) {
             {dict.products.premium.perfectWeddingGiftDesc}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <BuyButton priceId={product.priceId} dict={dict} />
+            <BuyButton priceId={product.stripePriceId} dict={dict} />
             <a
               href={`/${locale}/kontakt`}
               className="border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-4 px-8 rounded-lg transition"
@@ -327,7 +306,7 @@ export default async function PremiumDiaryPage({ params }: PremiumPageProps) {
           {dict.products.premium.readyToStartDesc}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <BuyButton priceId={product.priceId} dict={dict} />
+          <BuyButton priceId={product.stripePriceId} dict={dict} />
           <a
             href={`/${locale}/kontakt`}
             className="border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-4 px-8 rounded-lg transition"

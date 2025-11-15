@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
-import { webhookRateLimiter } from "@/lib/rate-limit";
 import { SecureLogger } from "@/lib/secure-logger";
 import { stripe, webhookSecret } from "@/lib/stripe";
 
@@ -58,17 +57,11 @@ async function verifyStripeSignature(
 
 export async function POST(request: NextRequest) {
   try {
-    // Get client IP for rate limiting
+    // Get client IP for logging
     const clientIP =
       request.headers.get("x-forwarded-for") ||
       request.headers.get("x-real-ip") ||
       "unknown";
-
-    // Check rate limit for webhook requests
-    if (webhookRateLimiter.isRateLimited(clientIP)) {
-      console.warn(`Webhook rate limit exceeded for IP: ${clientIP}`);
-      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
-    }
 
     const body = await request.text();
     const headersList = await headers();

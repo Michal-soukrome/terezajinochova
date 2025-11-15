@@ -1,0 +1,68 @@
+terezajinochova
+├── .filetreeignore
+├── CHANGELOG.md
+├── KNOWN_ISSUES.md
+├── README.md
+├── RECAP.md
+├── STATUS.md
+├── TECHNICAL_DOCS.md
+├── app
+│   ├── [locale]
+│   │   ├── cancel
+│   │   ├── kontakt
+│   │   ├── page.tsx
+│   │   ├── premium
+│   │   ├── success
+│   │   └── zakladni
+│   ├── api
+│   │   ├── download
+│   │   ├── validate-session
+│   │   └── webhook
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── loading.tsx
+│   ├── not-found.tsx
+│   └── page.tsx
+├── components
+│   ├── BuyButton.tsx
+│   ├── Header.tsx
+│   ├── LanguageSwitcher.tsx
+│   ├── Loading.tsx
+├── eslint.config.mjs
+├── filetree.txt
+├── i18n.ts
+├── lib
+│   ├── dictionaries
+│   │   ├── cs.ts
+│   │   ├── en.ts
+│   │   └── index.ts
+│   ├── env.ts
+│   ├── products.ts
+│   ├── rate-limit.ts
+│   ├── secure-logger.ts
+│   └── stripe.ts
+├── middleware.ts
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── private
+│   └── products
+│       └── README.md
+├── public
+│   ├── assets
+│   │   └── thumbnail_IMG_5264.png
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── images
+│   │   └── README.md
+│   ├── products
+│   │   └── README.txt
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   └── window.svg
+├── scripts
+│   └── verify-stripe-prices.ts
+├── tailwind.config.js
+├── tsconfig.json

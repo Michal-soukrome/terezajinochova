@@ -1,8 +1,8 @@
+// lib/dictionaries/index.ts
 import { cache } from "react";
+import { type Locale } from "@/i18n";
 import { dictionary as csDictionary } from "./cs";
 import { dictionary as enDictionary } from "./en";
-
-export type Locale = "cs" | "en";
 
 const dictionaries = {
   cs: csDictionary,

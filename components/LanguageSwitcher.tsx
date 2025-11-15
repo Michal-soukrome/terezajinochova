@@ -3,9 +3,7 @@
 import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 import { LoadingSpinner } from "./Loading";
-
-type Locale = "cs" | "en";
-const locales = ["cs", "en"] as const;
+import { type Locale, locales } from "@/i18n";
 
 interface LanguageSwitcherProps {
   currentLocale: Locale;

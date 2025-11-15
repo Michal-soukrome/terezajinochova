@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "verify-prices": "tsx scripts/verify-stripe-prices.ts",
+    "prebuild": "npm run verify-prices",
+    "tree": "tree -I 'node_modules|.next|.git|.vercel|coverage|out|dist|logs|.cache|build|.turbo' -L 3 -a > filetree.txt 2>/dev/null || npx tree-node-cli -L 3 -I 'node_modules|.next|.git|.vercel|coverage|out|dist|logs|.cache|build|.turbo' -o filetree.txt && cat filetree.txt"
   },
   "dependencies": {
     "@stripe/stripe-js": "^8.4.0",
@@ -14,7 +17,6 @@
     "next": "16.0.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "resend": "^6.4.2",
     "stripe": "^19.3.1"
   },
   "devDependencies": {
@@ -25,6 +27,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
     "tailwindcss": "^4",
+    "tree-node-cli": "^1.6.0",
+    "tsx": "^4.19.2",
     "typescript": "^5"
   }
 }

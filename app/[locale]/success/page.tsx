@@ -143,22 +143,30 @@ function SuccessContent() {
             <strong>✉️ {dict.success?.checkEmail || "Check your email"}</strong>
             <br />
             {dict.success?.emailDescription ||
-              "Payment confirmation can be found in your email inbox."}
+              "Payment confirmation from Stripe can be found in your email inbox."}
           </p>
           <p className="text-gray-700">
             <strong>
-              📥 {dict.success?.digitalVersion || "Digital version"}
+              📥 {dict.success?.digitalVersion || "Download your PDF"}
             </strong>
             <br />
             {dict.success?.digitalDescription ||
-              "PDF version will be sent to your email within 24 hours."}
+              "You can download your PDF immediately using the link below. The download link is valid for 30 days."}
           </p>
-          <p className="text-gray-700">
-            <strong>📦 {dict.success?.physicalCopy || "Physical copy"}</strong>
-            <br />
-            {dict.success?.physicalDescription ||
-              "Printed version will be shipped within 2-3 working days."}
-          </p>
+        </div>
+
+        <a
+          href={`/api/download?session=${searchParams.get("session_id")}`}
+          className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition mb-6 w-full text-center"
+          download
+        >
+          ⬇️ {dict.success?.downloadButton || "Download PDF"}
+        </a>
+
+        <div className="text-xs text-gray-500 bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-6">
+          <strong>📌 {dict.success?.importantNote || "Important:"}</strong>{" "}
+          {dict.success?.downloadNote ||
+            "Save this link or download the PDF now. The download link expires after 30 days. If you need help, contact us."}
         </div>
 
         <div className="text-sm text-gray-500 mb-6">

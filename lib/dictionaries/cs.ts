@@ -211,11 +211,15 @@ export const dictionary = {
     validatingPayment: "Ověřuji platbu...",
     redirecting: "Přesměrovávám...",
     checkEmail: "Zkontrolujte email",
-    emailDescription: "Platební potvrzení najdete ve vaší emailové schránce.",
-    digitalVersion: "Digitální verze",
-    digitalDescription: "PDF verze vám přijde na email do 24 hodin.",
-    physicalCopy: "Fyzická kopie",
-    physicalDescription: "Tištěná verze bude odeslána do 2-3 pracovních dnů.",
+    emailDescription:
+      "Platební potvrzení od Stripe najdete ve vaší emailové schránce.",
+    digitalVersion: "Stáhněte si své PDF",
+    digitalDescription:
+      "Své PDF si můžete stáhnout okamžitě pomocí tlačítka níže. Odkaz ke stažení je platný 30 dní.",
+    downloadButton: "Stáhnout PDF",
+    importantNote: "Důležité:",
+    downloadNote:
+      "Uložte si tento odkaz nebo stáhněte PDF ihned. Odkaz vyprší za 30 dní. V případě potřeby nás kontaktujte.",
     questions: "Máte dotazy? Napište nám na",
   },
   cancel: {

@@ -211,13 +211,15 @@ export const dictionary = {
     validatingPayment: "Validating payment...",
     redirecting: "Redirecting...",
     checkEmail: "Check your email",
-    emailDescription: "Payment confirmation can be found in your email inbox.",
-    digitalVersion: "Digital version",
+    emailDescription:
+      "Payment confirmation from Stripe can be found in your email inbox.",
+    digitalVersion: "Download your PDF",
     digitalDescription:
-      "PDF version will be sent to your email within 24 hours.",
-    physicalCopy: "Physical copy",
-    physicalDescription:
-      "Printed version will be shipped within 2-3 working days.",
+      "You can download your PDF immediately using the link below. The download link is valid for 30 days.",
+    downloadButton: "Download PDF",
+    importantNote: "Important:",
+    downloadNote:
+      "Save this link or download the PDF now. The download link expires after 30 days. If you need help, contact us.",
     questions: "Have questions? Write to us at",
   },
   cancel: {
