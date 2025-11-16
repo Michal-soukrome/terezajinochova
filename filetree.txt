@@ -2,12 +2,22 @@
 ├── .env.local
 ├── app/
 │   ├── [locale]/
+│   │   ├── basic/
 │   │   ├── cancel/
 │   │   ├── contact/
+│   │   ├── kontakt/
 │   │   ├── page.tsx
 │   │   ├── premium/
 │   │   ├── success/
-│   │   └── zakladni/
+│   │   ├── uspech/
+│   │   ├── zakladni/
+│   │   └── zruseno/
+│   ├── _pages/
+│   │   ├── basic.tsx
+│   │   ├── cancel.tsx
+│   │   ├── contact.tsx
+│   │   ├── premium.tsx
+│   │   └── success.tsx
 │   ├── api/
 │   │   └── webhook/
 │   ├── favicon.ico

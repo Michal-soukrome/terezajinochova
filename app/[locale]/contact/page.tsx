@@ -1,23 +1,50 @@
-import { getDictionary } from "@/lib/i18n";
-import { notFound } from "next/navigation";
+// app/[locale]/contact/page.tsx
+import { Metadata } from "next";
+import { getAlternatePaths } from "@/lib/routes";
+
+// Generate static params for both locales
+export function generateStaticParams() {
+  return [{ locale: "cs" as const }, { locale: "en" as const }];
+}
+
+// Dynamic metadata per locale
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "cs" | "en" }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const translations = await import(`@/lib/i18n/${locale}`);
+  const t = translations[locale];
+
+  const alternates = getAlternatePaths("contact");
+
+  return {
+    title: `${t.contact.title} | ${t.common.weddingDiary}`,
+    description: t.contact.description,
+    alternates: {
+      canonical: alternates[locale], // Use localized URL as canonical
+      languages: {
+        cs: alternates.cs, // /cs/kontakt
+        en: alternates.en, // /en/contact
+      },
+    },
+  };
+}
 
 export default async function ContactPage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: "cs" | "en" }>;
 }) {
   const { locale } = await params;
-
-  if (locale !== "cs" && locale !== "en") {
-    notFound();
-  }
-
-  const dict = getDictionary(locale as "cs" | "en");
+  const translations = await import(`@/lib/i18n/${locale}`);
+  const t = translations[locale];
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold mb-4">{dict.contact.title}</h1>
-      <p className="text-lg text-gray-600 mb-8">{dict.contact.description}</p>
+      <h1 className="text-4xl font-bold mb-4">{t.contact.title}</h1>
+      <p className="text-lg text-gray-600 mb-8">{t.contact.description}</p>
 
       <form className="space-y-6">
         <div>
@@ -25,7 +52,7 @@ export default async function ContactPage({
             htmlFor="name"
             className="block text-sm font-medium text-gray-700 mb-2"
           >
-            {dict.contact.form.name}
+            {t.contact.form?.name || "Name"}
           </label>
           <input
             type="text"
@@ -41,7 +68,7 @@ export default async function ContactPage({
             htmlFor="email"
             className="block text-sm font-medium text-gray-700 mb-2"
           >
-            {dict.contact.form.email}
+            {t.contact.form?.email || "Email"}
           </label>
           <input
             type="email"
@@ -57,7 +84,7 @@ export default async function ContactPage({
             htmlFor="message"
             className="block text-sm font-medium text-gray-700 mb-2"
           >
-            {dict.contact.form.message}
+            {t.contact.form?.message || "Message"}
           </label>
           <textarea
             id="message"
@@ -72,7 +99,7 @@ export default async function ContactPage({
           type="submit"
           className="w-full bg-black text-white py-4 rounded-lg font-semibold hover:bg-gray-800 transition"
         >
-          {dict.contact.form.send}
+          {t.contact.form?.send || "Send"}
         </button>
       </form>
 
@@ -91,8 +118,4 @@ export default async function ContactPage({
       </div>
     </div>
   );
-}
-
-export function generateStaticParams() {
-  return [{ locale: "cs" }, { locale: "en" }];
 }

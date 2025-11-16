@@ -2,9 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { useParams } from "next/navigation";
 import { LoadingSpinner } from "./Loading";
-import { type Locale } from "@/lib/i18n";
 
 interface BuyButtonProps {
   priceId: string;
@@ -55,19 +53,21 @@ export default function BuyButton({
         throw new Error("No checkout URL received");
       }
 
+      // Redirect to Stripe checkout
       window.location.href = url;
     } catch (err) {
+      console.error("Checkout error:", err);
       setError(err instanceof Error ? err.message : "An error occurred");
       setLoading(false);
     }
   };
 
   return (
-    <div>
+    <div className="w-full">
       <button
         onClick={handlePurchase}
         disabled={loading}
-        className={`bg-black hover:bg-gray-800 disabled:bg-gray-400 text-white font-medium py-3 px-8 rounded-lg text-lg transition-colors duration-200 flex items-center justify-center gap-2 min-w-[140px] ${className}`}
+        className={`disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${className}`}
       >
         {loading ? (
           <>
@@ -79,7 +79,7 @@ export default function BuyButton({
         )}
       </button>
       {error && (
-        <p className="text-red-500 text-sm mt-2" role="alert">
+        <p className="text-red-600 text-sm mt-2 text-center" role="alert">
           {error}
         </p>
       )}

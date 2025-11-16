@@ -40,7 +40,7 @@ export default function Header({ locale }: HeaderProps) {
                 {t.home}
               </Link>
               <Link
-                href={getLocalizedPath("zakladni", locale)}
+                href={getLocalizedPath("basic", locale)}
                 className="text-gray-600 hover:text-gray-900 transition-colors"
               >
                 {t.basic}
@@ -107,7 +107,7 @@ export default function Header({ locale }: HeaderProps) {
               {t.home}
             </Link>
             <Link
-              href={getLocalizedPath("zakladni", locale)}
+              href={getLocalizedPath("basic", locale)}
               className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
               onClick={closeMenu}
             >
